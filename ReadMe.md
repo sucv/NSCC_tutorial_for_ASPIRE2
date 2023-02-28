@@ -1,4 +1,14 @@
-## Step 1: Preparation (Local)
+# Table of Content<a name="Table_of_Content"></a>
+
++ [Step 1: Preparation (In Local)](#S1)
+	+ [Option 1: Create your own Singularity container](#O1)
+	+ [Option 2: Create your own Singularity container](#O2)
+	+ [Option 3: Create your own Singularity container](#O3)
++ [Step 2: Run (In NSCC)](#S2)
++ [Endnote: Endnote: Useful commands in NSCC](#E)
+
+## Step 1: Preparation (Local)<a name="S1"></a>
+[Return to Table of Content](#Table_of_Content)
 
 First, we need to prepare the Python environment for our code. There are three options:
 
@@ -15,13 +25,14 @@ First, we need to prepare the Python environment for our code. There are three o
 	+ Cons: Missing core packages. For example, the Pytorch module missed scipy, pandas, ....
 	+ Comment: Never worked for me. It may work if your code is written purely using Pytorch API.
 
-#### Option 1
+#### Option 1<a name="O1"></a>
+[Return to Table of Content](#Table_of_Content)
 
 TLDR: in your host, install Virtualbox with a Ubuntu 22 as the guest system, install Singularity in the guest system, build the container there, then fetch it in your host system. See below for details.
 
 The installation of virtualbox and the Ubuntu 22 is straightforward and there is plenty of tutorials on this. Therefore I only highlight a few things:
 
-+ Virtualbox [download](https://entuedu-my.sharepoint.com/:u:/g/personal/su012_e_ntu_edu_sg/EVzxRsD8Jx5BmBxsbxuFCNAB5_wWMezZjcy0AxwDHVtvlw?e=DYe8yC). (Why? It's light-weight, cross-platform, and open-sourced. It's a neat solution because we can simply remove the guest system to ditch the messy Singularity from your PC.)
++ Virtualbox [download](https://entuedu-my.sharepoint.com/:u:/g/personal/su012_e_ntu_edu_sg/EVzxRsD8Jx5BmBxsbxuFCNAB5_wWMezZjcy0AxwDHVtvlw?e=DYe8yC). (Why? It's light-weight, cross-platform, and open-sourced. It's a neat solution because we can simply remove the guest system to ditch the messy Singularity from your PC. I share it using my personal url since NTU blocked the official link.)
 + Ubuntu22 [download](http://www.releases.ubuntu.com/22.04/ubuntu-22.04.2-desktop-amd64.iso) 
 
 
@@ -64,20 +75,23 @@ The installation of virtualbox and the Ubuntu 22 is straightforward and there is
 
 
 
-#### Option 2
+#### Option 2<a name="O2"></a>
+[Return to Table of Content](#Table_of_Content)
 
 Simply download the built container from [this link](https://entuedu-my.sharepoint.com/:f:/g/personal/su012_e_ntu_edu_sg/EmfmArJu9LtJhgGbPHyGMqgB0t33SoyM2Y_pVXgj94EBdg?e=gOZvT6), and proceed to the next step.
 
 The downloaded file is built following the steps and settings in Option 1, with `scipy scikit-learn matplotlib pandas` installed. They may meet your common usage already.
 
-#### Option 3
+#### Option 3<a name="O3"></a>
+[Return to Table of Content](#Table_of_Content)
 
 Login to your NSCC console, type `module avail` to see the available modules, and `module load pytorch` to load any modules you want.
 
 Note that the module needs to be loaded in the runtime of your job, therefore, the `module load pytorch` commands shall be included in the job definition. You may study this option on your own but I never make it.
 
 
-## Step 2 Run (In NSCC)
+## Step 2 Run (In NSCC)<a name="S2"></a>
+[Return to Table of Content](#Table_of_Content)
 
 First, edit your job definition. See `jpb.psb` in detail! The examples and comments there covered everything!
 
@@ -93,7 +107,8 @@ to submit your job. If your `main.py` needs arguments, and you have already edit
 qsub -v model=supernet,lr=1e-3,modality="video audio",emotion=valence,fold=12,seed=3704 job.pbs
 ```
 
-## Endnote: Useful commands in NSCC
+## Endnote: Useful commands in NSCC<a name="E"></a>
+[Return to Table of Content](#Table_of_Content)
 
 + `qstat`: see the job numbers and status of your submitted jobs, but you don't know what variables you fed to the job.
 + `qstat -x -f`: see the summary of your recently submitted jobs, you can see the variables fed to the job if any.

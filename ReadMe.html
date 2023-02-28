@@ -1065,7 +1065,19 @@ body .markdown-body
 .codehilite .vi{color:teal}
 .codehilite .il{color:#009999}
 .codehilite .gc{color:#999;background-color:#EAF2F5}
-</style><title>tutorial</title></head><body><article class="markdown-body"><h2 id="step-1-preparation-local">Step 1: Preparation (Local)<a class="headerlink" href="#step-1-preparation-local" title="Permanent link"></a></h2>
+</style><title>ReadMe</title></head><body><article class="markdown-body"><h1 id="table-of-content">Table of Content<a name="Table_of_Content"></a><a class="headerlink" href="#table-of-content" title="Permanent link"></a></h1>
+<ul>
+<li><a href="#S1">Step 1: Preparation (In Local)</a><ul>
+<li><a href="#O1">Option 1: Create your own Singularity container</a></li>
+<li><a href="#O2">Option 2: Create your own Singularity container</a></li>
+<li><a href="#O3">Option 3: Create your own Singularity container</a></li>
+</ul>
+</li>
+<li><a href="#S2">Step 2: Run (In NSCC)</a></li>
+<li><a href="#E">Endnote: Endnote: Useful commands in NSCC</a></li>
+</ul>
+<h2 id="step-1-preparation-local">Step 1: Preparation (Local)<a name="S1"></a><a class="headerlink" href="#step-1-preparation-local" title="Permanent link"></a></h2>
+<p><a href="#Table_of_Content">Return to Table of Content</a></p>
 <p>First, we need to prepare the Python environment for our code. There are three options:</p>
 <ul>
 <li>Option 1: Create your own Singularity container.<ul>
@@ -1087,11 +1099,12 @@ body .markdown-body
 </ul>
 </li>
 </ul>
-<h4 id="option-1">Option 1<a class="headerlink" href="#option-1" title="Permanent link"></a></h4>
+<h4 id="option-1">Option 1<a name="O1"></a><a class="headerlink" href="#option-1" title="Permanent link"></a></h4>
+<p><a href="#Table_of_Content">Return to Table of Content</a></p>
 <p>TLDR: in your host, install Virtualbox with a Ubuntu 22 as the guest system, install Singularity in the guest system, build the container there, then fetch it in your host system. See below for details.</p>
 <p>The installation of virtualbox and the Ubuntu 22 is straightforward and there is plenty of tutorials on this. Therefore I only highlight a few things:</p>
 <ul>
-<li>Virtualbox <a href="https://entuedu-my.sharepoint.com/:u:/g/personal/su012_e_ntu_edu_sg/EVzxRsD8Jx5BmBxsbxuFCNAB5_wWMezZjcy0AxwDHVtvlw?e=DYe8yC">download</a>. (Why? It&rsquo;s light-weight, cross-platform, and open-sourced. It&rsquo;s a neat solution because we can simply remove the guest system to ditch the messy Singularity from your PC.)</li>
+<li>Virtualbox <a href="https://entuedu-my.sharepoint.com/:u:/g/personal/su012_e_ntu_edu_sg/EVzxRsD8Jx5BmBxsbxuFCNAB5_wWMezZjcy0AxwDHVtvlw?e=DYe8yC">download</a>. (Why? It&rsquo;s light-weight, cross-platform, and open-sourced. It&rsquo;s a neat solution because we can simply remove the guest system to ditch the messy Singularity from your PC. I share it using my personal url since NTU blocked the official link.)</li>
 <li>Ubuntu22 <a href="http://www.releases.ubuntu.com/22.04/ubuntu-22.04.2-desktop-amd64.iso">download</a> </li>
 </ul>
 <p><img alt="" src="/C:/Users/Su/OneDrive%20-%20Nanyang%20Technological%20University/NSCC_Tutorial2/images/vb1.png" /></p>
@@ -1142,13 +1155,16 @@ body .markdown-body
 <blockquote>
 <p>Finally, in the terminal, type <code>sudo singularity build  pt113.sif step_2_my.def</code> to build the container. After 10-20mins, a container named <code>pt113.sif</code> will be generated in the current directory (shared with the host system), and you should be able to access it from your host system. It is now ready to be uploaded to NSCC.</p>
 </blockquote>
-<h4 id="option-2">Option 2<a class="headerlink" href="#option-2" title="Permanent link"></a></h4>
+<h4 id="option-2">Option 2<a name="O2"></a><a class="headerlink" href="#option-2" title="Permanent link"></a></h4>
+<p><a href="#Table_of_Content">Return to Table of Content</a></p>
 <p>Simply download the built container from <a href="https://entuedu-my.sharepoint.com/:f:/g/personal/su012_e_ntu_edu_sg/EmfmArJu9LtJhgGbPHyGMqgB0t33SoyM2Y_pVXgj94EBdg?e=gOZvT6">this link</a>, and proceed to the next step.</p>
 <p>The downloaded file is built following the steps and settings in Option 1, with <code>scipy scikit-learn matplotlib pandas</code> installed. They may meet your common usage already.</p>
-<h4 id="option-3">Option 3<a class="headerlink" href="#option-3" title="Permanent link"></a></h4>
+<h4 id="option-3">Option 3<a name="O3"></a><a class="headerlink" href="#option-3" title="Permanent link"></a></h4>
+<p><a href="#Table_of_Content">Return to Table of Content</a></p>
 <p>Login to your NSCC console, type <code>module avail</code> to see the available modules, and <code>module load pytorch</code> to load any modules you want.</p>
 <p>Note that the module needs to be loaded in the runtime of your job, therefore, the <code>module load pytorch</code> commands shall be included in the job definition. You may study this option on your own but I never make it.</p>
-<h2 id="step-2-run-in-nscc">Step 2 Run (In NSCC)<a class="headerlink" href="#step-2-run-in-nscc" title="Permanent link"></a></h2>
+<h2 id="step-2-run-in-nscc">Step 2 Run (In NSCC)<a name="S2"></a><a class="headerlink" href="#step-2-run-in-nscc" title="Permanent link"></a></h2>
+<p><a href="#Table_of_Content">Return to Table of Content</a></p>
 <p>First, edit your job definition. See <code>jpb.psb</code> in detail! The examples and comments there covered everything!</p>
 <p>Then, upload your container (the <code>.sif</code> file), dataset, code, and <code>job.psb</code> to NSCC. I always put <code>job.psb</code> and <code>main.py</code> in the same directory for convenience. Moreover, following NSCC&rsquo;s instruction, large files like dataset and container should be stored in <code>~/scratch</code> directory.</p>
 <p>Finally, in the NSCC terminal, cd to the path storing <code>main.py</code>, and type
@@ -1157,7 +1173,8 @@ body .markdown-body
 <p>to submit your job. If your <code>main.py</code> needs arguments, and you have already edit your <code>job.psb</code> accordingly (see <code>job.psb</code> for example), simply feed them with <code>-v</code> flag and comma separator as 
 <div class="highlight"><pre>qsub -v model=supernet,lr=1e-3,modality=&quot;video audio&quot;,emotion=valence,fold=12,seed=3704 job.pbs
 </pre></div></p>
-<h2 id="endnote-useful-commands-in-nscc">Endnote: Useful commands in NSCC<a class="headerlink" href="#endnote-useful-commands-in-nscc" title="Permanent link"></a></h2>
+<h2 id="endnote-useful-commands-in-nscc">Endnote: Useful commands in NSCC<a name="E"></a><a class="headerlink" href="#endnote-useful-commands-in-nscc" title="Permanent link"></a></h2>
+<p><a href="#Table_of_Content">Return to Table of Content</a></p>
 <ul>
 <li><code>qstat</code>: see the job numbers and status of your submitted jobs, but you don&rsquo;t know what variables you fed to the job.</li>
 <li><code>qstat -x -f</code>: see the summary of your recently submitted jobs, you can see the variables fed to the job if any.</li>
