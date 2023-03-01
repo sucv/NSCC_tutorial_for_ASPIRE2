@@ -7,8 +7,8 @@
 
 + [Step 1: Preparation (In Local)](#step-1-preparation-in-local)
 	+ [Option 1: Create your own Singularity container](#option-1)
-	+ [Option 2: Create your own Singularity container](#option-2)
-	+ [Option 3: Create your own Singularity container](#option-3)
+	+ [Option 2: Use a built container and pip install any missing packages every time you submit your jobs](#option-2)
+	+ [Option 3: Load the module from NSCC directly](#option-3)
 + [Step 2: Run (In NSCC)](#step-2-run-in-nscc)
 + [Endnote: Endnote: Useful commands in NSCC](#endnote-useful-commands-in-nscc)
 
