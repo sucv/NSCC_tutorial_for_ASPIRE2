@@ -71,7 +71,7 @@ The installation of virtualbox and the Ubuntu 22 is straightforward and there is
 > In your tutorial directory of your HOST SYSTEM, edit `my.def`. In Line 18 follow the example to add any Python packages you want. Just like how you normally install them in your conda environment. This definition file tells Singularity to build these Python packages into the container. Note that the Nvidia A100 demands cudnn8 and higher, which corresponds to a newer version of pytorch. 
 
 ![](./images/vb8.png)
-> Finally, in the terminal, type `sudo singularity build  pt113.sif step_2_my.def` to build the container. After 10-20mins, a container named `pt113.sif` will be generated in the current directory (shared with the host system), and you should be able to access it from your host system. It is now ready to be uploaded to NSCC.
+> Finally, in the terminal, type `sudo singularity build  pt113.sif my.def` to build the container. After 10-20mins, a container named `pt113.sif` will be generated in the current directory (shared with the host system), and you should be able to access it from your host system. It is now ready to be uploaded to NSCC.
 
 
 
@@ -80,7 +80,7 @@ The installation of virtualbox and the Ubuntu 22 is straightforward and there is
 
 Simply download the built container from [this link](https://entuedu-my.sharepoint.com/:f:/g/personal/su012_e_ntu_edu_sg/EmfmArJu9LtJhgGbPHyGMqgB0t33SoyM2Y_pVXgj94EBdg?e=gOZvT6), and proceed to the next step.
 
-The downloaded file is built following the steps and settings in Option 1, with `scipy scikit-learn matplotlib pandas` installed. They may meet your common usage already.
+The downloaded file is built following the steps and settings in Option 1, with `scipy scikit-learn matplotlib pandas` installed. They may meet your common usage already. To further install more packages on-the-go, check `job.psb`.
 
 #### Option 3<a name="O3"></a>
 [Return to Table of Content](#Table_of_Content)
@@ -90,7 +90,7 @@ Login to your NSCC console, type `module avail` to see the available modules, an
 Note that the module needs to be loaded in the runtime of your job, therefore, the `module load pytorch` commands shall be included in the job definition. You may study this option on your own but I never make it.
 
 
-## Step 2 Run (In NSCC)<a name="S2"></a>
+## Step 2: Run (In NSCC)<a name="S2"></a>
 [Return to Table of Content](#Table_of_Content)
 
 First, edit your job definition. See `jpb.psb` in detail! The examples and comments there covered everything!
