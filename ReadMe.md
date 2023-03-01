@@ -33,9 +33,9 @@ First, we need to prepare the Python environment for our code. There are three o
 #### Option 1<a name="option-1"></a>
 [Return to Table of Content](#table-of-content)
 
-TLDR: in your host, install Virtualbox with a Ubuntu 22 as the guest system, install Singularity in the guest system, build the container there, then fetch it in your host system. See below for details.
+TLDR: in your host system, install Virtualbox with a Ubuntu 22 as the guest system, install Singularity in the guest system, build the container there, then fetch it in your host system. See below for details.
 
-The installation of virtualbox and the Ubuntu 22 is straightforward and there is plenty of tutorials on this. Therefore I only highlight a few things:
+The installation of virtualbox and the Ubuntu 22 is straightforward and there are plenty of tutorials on this. Therefore I only highlight a few things:
 
 + Virtualbox [download](https://entuedu-my.sharepoint.com/:u:/g/personal/su012_e_ntu_edu_sg/EVzxRsD8Jx5BmBxsbxuFCNAB5_wWMezZjcy0AxwDHVtvlw?e=DYe8yC). (Why? It's light-weight, cross-platform, and open-sourced. It's a neat solution because we can simply remove the guest system to ditch the messy Singularity from your PC. I share it using my personal url since NTU blocked the official link.)
 + Ubuntu22 [download](http://www.releases.ubuntu.com/22.04/ubuntu-22.04.2-desktop-amd64.iso) 
