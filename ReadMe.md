@@ -1,14 +1,14 @@
-# Table of Content<a name="Table_of_Content"></a>
+# Table of Content<a name="table-of-content"></a>
 
-+ [Step 1: Preparation (In Local)](#S1)
-	+ [Option 1: Create your own Singularity container](#O1)
-	+ [Option 2: Create your own Singularity container](#O2)
-	+ [Option 3: Create your own Singularity container](#O3)
-+ [Step 2: Run (In NSCC)](#S2)
-+ [Endnote: Endnote: Useful commands in NSCC](#E)
++ [Step 1: Preparation (In Local)](#step-1-preparation-in-local)
+	+ [Option 1: Create your own Singularity container](#option-1)
+	+ [Option 2: Create your own Singularity container](#option-2)
+	+ [Option 3: Create your own Singularity container](#option-3)
++ [Step 2: Run (In NSCC)](#step-2-run-in-nscc)
++ [Endnote: Endnote: Useful commands in NSCC](#endnote-useful-commands-in-nscc)
 
-## Step 1: Preparation (Local)<a name="S1"></a>
-[Return to Table of Content](#Table_of_Content)
+## Step 1: Preparation (In Local)<a name="step-1-preparation-in-local"></a>
+[Return to Table of Content](#table-of-content)
 
 First, we need to prepare the Python environment for our code. There are three options:
 
@@ -25,8 +25,8 @@ First, we need to prepare the Python environment for our code. There are three o
 	+ Cons: Missing core packages. For example, the Pytorch module missed scipy, pandas, ....
 	+ Comment: Never worked for me. It may work if your code is written purely using Pytorch API.
 
-#### Option 1<a name="O1"></a>
-[Return to Table of Content](#Table_of_Content)
+#### Option 1<a name="option-1"></a>
+[Return to Table of Content](#table-of-content)
 
 TLDR: in your host, install Virtualbox with a Ubuntu 22 as the guest system, install Singularity in the guest system, build the container there, then fetch it in your host system. See below for details.
 
@@ -75,23 +75,23 @@ The installation of virtualbox and the Ubuntu 22 is straightforward and there is
 
 
 
-#### Option 2<a name="O2"></a>
-[Return to Table of Content](#Table_of_Content)
+#### Option 2<a name="option-2"></a>
+[Return to Table of Content](#table-of-content)
 
 Simply download the built container from [this link](https://entuedu-my.sharepoint.com/:f:/g/personal/su012_e_ntu_edu_sg/EmfmArJu9LtJhgGbPHyGMqgB0t33SoyM2Y_pVXgj94EBdg?e=gOZvT6), and proceed to the next step.
 
 The downloaded file is built following the steps and settings in Option 1, with `scipy scikit-learn matplotlib pandas` installed. They may meet your common usage already. To further install more packages on-the-go, check `job.psb`.
 
-#### Option 3<a name="O3"></a>
-[Return to Table of Content](#Table_of_Content)
+#### Option 3<a name="option-3"></a>
+[Return to Table of Content](#table-of-content)
 
 Login to your NSCC console, type `module avail` to see the available modules, and `module load pytorch` to load any modules you want.
 
 Note that the module needs to be loaded in the runtime of your job, therefore, the `module load pytorch` commands shall be included in the job definition. You may study this option on your own but I never make it.
 
 
-## Step 2: Run (In NSCC)<a name="S2"></a>
-[Return to Table of Content](#Table_of_Content)
+## Step 2: Run (In NSCC)<a name="step-2-run-in-nscc"></a>
+[Return to Table of Content](#table-of-content)
 
 First, edit your job definition. See `jpb.psb` in detail! The examples and comments there covered everything!
 
@@ -107,8 +107,8 @@ to submit your job. If your `main.py` needs arguments, and you have already edit
 qsub -v model=supernet,lr=1e-3,modality="video audio",emotion=valence,fold=12,seed=3704 job.pbs
 ```
 
-## Endnote: Useful commands in NSCC<a name="E"></a>
-[Return to Table of Content](#Table_of_Content)
+## Endnote: Useful commands in NSCC<a name="endnote-useful-commands-in-nscc"></a>
+[Return to Table of Content](#table-of-content)
 
 + `qstat`: see the job numbers and status of your submitted jobs, but you don't know what variables you fed to the job.
 + `qstat -x -f`: see the summary of your recently submitted jobs, you can see the variables fed to the job if any.
