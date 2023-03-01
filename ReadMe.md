@@ -60,14 +60,14 @@ The installation of virtualbox and the Ubuntu 22 is straightforward and there ar
 > Check auto-mount and make permanent for the sharing folder.
 
 ![](./images/vb3.png)
-> You should see the shared folder in your ubuntu guest system after that. In your host system, put the tutorial folder there so that the guest system can access the one-click script for Singularity installation. (Note, if you cannot see the shared folder, try restarting the guest system.)
+> You should see the shared folder in your ubuntu guest system after that. In your host system, put the tutorial folder there so that the guest system can access the shell script for Singularity installation. (Note, if you cannot see the shared folder, try restarting the guest system.)
 
 ![](./images/vb1_5.png)
-> Don't be hasty! Let's take a snapshot. A Snapshot is a checkpoint of the guest system. Later, if you screwed up your guest system, you can simply go back to the fresh stage and no need to reinstall Ubuntu again! To do so, click `Take` to take a snapshot for the fresh Ubuntu. This one is where "all things start". 
+> Don't be hasty! Let's take a snapshot. A Snapshot is a checkpoint of the guest system. Later, if you screwed up your guest system, you can simply go back to the fresh stage and no need to reinstall Ubuntu again! To do so, click `Take` to take a snapshot for the fresh Ubuntu. This one is where "all things start". When you want to go back in time, choose the "Fresh Ubuntu" and click `Restore`.
 
 
 ![](./images/vb5.png)
-> In the tutorial directory of your guest system, right click --> Open in Terminal. First off, type `su` followed by the password `changeme` to switch to the root user. Then, type `usermod -aG sudo vboxuser` to add the user to sudoer group, and type `su vboxuser` to switch back to the user. Now, type `chmod +x install_singularity.sh` to change the one-click script to executable. Finally type `./install_singularity.sh` to install the messy Singularity! 
+> In the tutorial directory of your guest system, right click --> Open in Terminal. First off, type `su` followed by the password `changeme` to switch to the root user. Then, type `usermod -aG sudo vboxuser` to add the user to sudoer group, and type `su vboxuser` to switch back to the user. Now, type `chmod +x install_singularity.sh` to change the shell script to executable. Finally type `./install_singularity.sh` to install the messy Singularity! 
 
 ![](./images/vb6.png)
 > The installation can take 10-20 mins. After which, type `singularity` in the terminal to confirm that the command is recognized.
