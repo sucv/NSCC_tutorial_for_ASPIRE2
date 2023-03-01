@@ -37,7 +37,7 @@ The installation of virtualbox and the Ubuntu 22 is straightforward and there is
 
 
 ![](./images/vb1.png)
-> Install the Ubuntu guest system on Virtualbox. Leaving the username and pwd by default is totally fine (the password is `changeme`). Check the addition iso so that the host/guest sharing folder and copyboard can be available later.
+> Install the Ubuntu guest system on Virtualbox. Leaving the username and pwd by default is totally fine (the password is `changeme`). Check the addition iso so that the host/guest sharing folder and copyboard can be available later. Note that the addition iso should be available in the root directory of your VirtualBox once you installed it.
 
 ![](./images/vb1_1.png)
 > Specify the hardware for the guest system according to your host system. Usually 8G and 1/4 of your CPUs are enough.
