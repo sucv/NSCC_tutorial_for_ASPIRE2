@@ -48,8 +48,8 @@ cd "$PBS_O_WORKDIR" || exit $?
 ### are provided below.
 
 ### Print the environment variables and GPU dashbroad.
-printenv > env_log
-nvidia-smi > gpu_log
+printenv
+nvidia-smi
 
 ### Bind the scratch directory to singularity so that it can find it.
 export SINGULARITY_BIND="/scratch:/scratch,/home/project:/data/project"
