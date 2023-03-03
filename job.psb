@@ -55,6 +55,11 @@ nvidia-smi > gpu_log
 export SINGULARITY_BIND="/scratch:/scratch,/home/project:/data/project"
 module load singularity
 
+### Manually assign index to Singularity
+export CUDA_VISIBLE_DEVICES=0
+### export CUDA_VISIBLE_DEVICES=0,1,2,3
+### Note that if you applied more gpus, then using export CUDA_VISIBLE_DEVICES=0,1,2,3 for 4 gpus.
+
 ### If you choose to install your Python package on-the-go, uncomment the next line to install your packages.
 ### singularity run ~/scratch/pt113.sif python -m pip install --user mne pandas seaborn
 

@@ -1,5 +1,7 @@
 # Change Log
 
++ 3-MAR 2023
+	+ Revised the `job.psb` so that the container can know the gpu index. This prevent the bug `AssertionError: Invalid device id` when loading a checkpoint. The bug is caused by the recognizable gpu index assigned by the PBS-PRO to the variable `CUDA_VISIBLE_DEVICES`, in which  when `torch.cuda.is_available() = True`, yet `torch.cuda.device_count() = 0`. The revised `job.psb` manually assigns the gpu index instead. 
 + 1-MAR 2023
 	+ Uploaded the correct container file (for [option 2](#option-2)).
 
@@ -107,7 +109,7 @@ Finally, in the NSCC terminal, cd to the path storing `main.py`, and type
 qsub job.pbs
 ```
 
-to submit your job. If your `main.py` needs arguments, and you have already edit your `job.psb` accordingly (see `job.psb` for example), simply feed them with `-v` flag and comma separator as 
+to submit your job. If your `main.py` needs arguments, and you have already edited your `job.psb` accordingly (see `job.psb` for example), simply feed them with `-v` flag and comma separator as 
 ```
 qsub -v model=supernet,lr=1e-3,modality="video audio",emotion=valence,fold=12,seed=3704 job.pbs
 ```

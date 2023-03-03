@@ -1,0 +1,45 @@
+Bootstrap: docker
+From: pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime  # Use a newer pytorch version because Nvidia A100 demands this.
+Stage: build
+
+
+
+%post
+
+        # Rountine for Ubuntu. Make sure to add -y for an apt install command.
+
+        apt update
+        apt autoremove
+
+
+        # Install everything you need in the virtual system. You should customize the commands below.
+        # Use opt/conda/bin/pip, instead of pip. The latter is not from conda, it doesn't exist! 
+
+        opt/conda/bin/pip install scipy scikit-learn matplotlib pandas
+
+
+        # Install everything you need in the virtual system. You should customize the commands above.
+
+        
+
+%environment
+
+        # Set this variable to false. So that the container will have this boolean
+
+        # variable in FALSE intrinsically.
+
+        # Note, the characters should be all in upper case.
+
+        # The reason to set this variable is that the file system in NSCC
+
+        # disabled the file locking, whereas the Python "with open" command originally 
+
+        # requires the file to be locked.
+
+        # Setting the variable of the container can override this requirement.
+
+
+
+        HDF5_USE_FILE_LOCKING='FALSE'
+
+        export HDF5_USE_FILE_LOCKING
