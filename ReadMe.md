@@ -1,6 +1,6 @@
 # Change Log
 
-+10-MAR 2023
++ 10-MAR 2023
 	+ Revised the `job.psb` so that the examples for applying more than 1 gpus are provided.
 + 3-MAR 2023
 	+ Revised the `job.psb` so that the container can know the gpu index. This prevent the bug `AssertionError: Invalid device id` when loading a checkpoint. The bug is caused by the unrecognizable gpu index assigned by the PBS-PRO to the variable `CUDA_VISIBLE_DEVICES`, which further caused `torch.cuda.is_available() = True`, yet `torch.cuda.device_count() = 0`. The revised `job.psb` manually assigns the gpu index instead. 
