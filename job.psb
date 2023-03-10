@@ -4,20 +4,27 @@
 ### Any lines started with #PBS are not comments,
 ### but the job attributes for PBS Pro to read.
 
-### Request a single GPU
-### The "select=1" specifies the number of nodes
-### To ask for a whole node use "PBS -l select=1:ncpus=128:ngpus=8"
-### If you request less than 8 GPU then make the ncpus value
-###   16 times the ngpus value, e.g. select=1:ncpus=16:ngpus=1
-#PBS -l select=1:ncpus=16:ngpus=1
-
 ### Specify amount of time required (maximum 24 hours)
 ### If you pay 5K SGD monthly then you can require 240 hours for a job :)
 #PBS -l walltime=24:00:00
 
-### Select the correct queue. For other available queues 
-### type "qstat -Q" in your console to see.
-#PBS -q dgx
+### Select the correct node to queue. 
+### Currently, there are two type of nodes in ASPIRE 2A, normal and ai.
+### Each normal node has 4 gpus, while each ai node has 8 gpus.
+#PBS -q normal
+### PBS -q ai
+
+### Request a single GPU
+### The "select=1" specifies the number of nodes
+### Make the ncpus value 16 times the ngpus value, e.g. select=1:ncpus=16:ngpus=1
+#PBS -l select=1:ncpus=16:ngpus=1
+
+### Request for multiple GPUs
+### Note that each normal node has 4 gpus, while each ai node has 8 gpus.
+### If you have queued for normal node and wanted to apply for 8 gpus, then use
+### #PBS -l select=2:ncpus=64:ngpus=4
+### If you have queued for ai node and wanted to apply for 8 gpus, then use
+### #PBS -l select=1:ncpus=128:ngpus=8
 
 ### Specify project code
 ### e.g. 41000001 was the pilot project code
