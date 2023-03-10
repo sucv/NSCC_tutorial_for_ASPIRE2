@@ -19,7 +19,7 @@
 ### Make the ncpus value 16 times the ngpus value, e.g. select=1:ncpus=16:ngpus=1
 #PBS -l select=1:ncpus=16:ngpus=1
 
-### Request for multiple GPUs
+### Request multiple GPUs
 ### Note that each normal node has 4 gpus, while each ai node has 8 gpus.
 ### If you have queued for normal node and wanted to apply for 8 gpus, then use
 ### #PBS -l select=2:ncpus=64:ngpus=4
