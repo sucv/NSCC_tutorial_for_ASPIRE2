@@ -89,7 +89,7 @@ The installation of virtualbox and the Ubuntu 22 is straightforward and there ar
 
 Simply download the built container from [this link](https://entuedu-my.sharepoint.com/:f:/g/personal/su012_e_ntu_edu_sg/EmfmArJu9LtJhgGbPHyGMqgB0t33SoyM2Y_pVXgj94EBdg?e=gOZvT6), and proceed to the next step.
 
-The downloaded file is built following the steps and settings in Option 1, with `scipy scikit-learn matplotlib pandas` installed. They may meet your common usage already. To further install more packages on-the-go, check `job.psb`.
+The downloaded file is built following the steps and settings in Option 1, with `scipy scikit-learn matplotlib pandas` being installed. They may meet your common usage already. To further install more packages on-the-go, check `job.psb`.
 
 #### Option 3<a name="option-3"></a>
 [Return to Table of Content](#table-of-content)
