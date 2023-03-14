@@ -4,7 +4,7 @@
 ### Any lines started with #PBS are not comments,
 ### but the job attributes for PBS Pro to read.
 
-### Specify amount of time required (maximum 24 hours)
+### Specify the amount of time required (maximum 24 hours)
 ### If you pay 5K SGD monthly then you can require 240 hours for a job :)
 #PBS -l walltime=24:00:00
 
@@ -21,20 +21,20 @@
 
 ### Request multiple GPUs
 ### Note that each normal node has 4 gpus, while each ai node has 8 gpus.
-### If you have queued for normal node and wanted to apply for 8 gpus, then use
+### If you wanna queue for the normal node with 8 gpus, then use
 ### #PBS -l select=2:ncpus=64:ngpus=4
-### If you have queued for ai node and wanted to apply for 8 gpus, then use
+### If you wanna queue for the ai node with 8 gpus, then use
 ### #PBS -l select=1:ncpus=128:ngpus=8
 
-### Specify project code
+### Specify the project code
 ### e.g. 41000001 was the pilot project code
 ### Job will not submit unless this is changed
 ### The project code, if any, should appear in the welcome information 
 ### in the console once you logged into your NSCC account.
-### A personal code would queue forever.
+### A personal code may queue forever.
 #PBS -P 12001577
 
-### Specify name for job
+### Specify the name for job
 ### They records the standard outputs and errors during the job execution.
 #PBS -N emo_img
 
@@ -49,40 +49,41 @@
 ### Change to directory where the job was submitted
 cd "$PBS_O_WORKDIR" || exit $?
 
-### Since our job is to simply run the python code, and
+### Since our goal is to run the python code, and
 ### we have built a personal container, we could simply
 ### run the job by one line. The instructions for each segment
 ### are provided below.
 
-### Print the environment variables and GPU dashbroad.
+### Print the environment variables and GPU dashbroad. When the job is finished, you can find them
+### from the JOBNAME.oJOBID file.
 printenv
 nvidia-smi
 
 ### Bind the scratch directory to singularity so that it can find it.
+### Don't change them!
 export SINGULARITY_BIND="/scratch:/scratch,/home/project:/data/project"
 module load singularity
 
 ### Manually assign index to Singularity
 export CUDA_VISIBLE_DEVICES=0
-### export CUDA_VISIBLE_DEVICES=0,1,2,3
 ### Note that if you applied more gpus, then using export CUDA_VISIBLE_DEVICES=0,1,2,3 for 4 gpus.
+### export CUDA_VISIBLE_DEVICES=0,1,2,3
 
 ### If you choose to install your Python package on-the-go, uncomment the next line to install your packages.
 ### singularity run ~/scratch/pt113.sif python -m pip install --user mne pandas seaborn
 
-singularity run --nv  ~/scratch/pt113.sif python ~/tutorial/main.py > main_log
+singularity run --nv  ~/scratch/pt113.sif python ~/tutorial/main.py
 
 ### If your main.py has arguments, see the following example.
-### singularity run --nv  ~/scratch/my.sif python ~/tutorial/main.py -var1 $v1 -var2 $v2> main_log
+### singularity run --nv  ~/scratch/my.sif python ~/tutorial/main.py -var1 $v1 -var2 $v2
 
-### The first one "singularity run --nv my.sif" means
+### The "singularity run --nv my.sif" means
 ### to use singularity to run "my.sif" container, with
 ### nvidia cuda support enabled.
 
-### The second one "python main.py > main_log" is exactly the same
-### as we did in daily PhD struggle, which is, to run the code,
-### and log the console output in a text file named "main_log".
-### When arguments are needed, we indicate them using the dollor symbol $v1 so that later we can feed them to job.psb.
+### The "python main.py" is exactly the same
+### as we did in daily PhD struggle, which is, to run the code.
+### When arguments are needed, we indicate them using the dollar symbol $v1 so that later we can feed them to job.psb.
 
 ### Some other commands that may be useful are provided below.
 ### Print the environment variable of NSCC PBS Pro. So 
