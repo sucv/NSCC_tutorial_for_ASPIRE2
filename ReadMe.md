@@ -10,6 +10,7 @@
 # Table of Content<a name="table-of-content"></a>
 
 + [Step 1: Preparation (In Local)](#step-1-preparation-in-local)
+	+ [Option 0: Load anaconda3 and then do it in the usual way](#option-0)
 	+ [Option 1: Create your own Singularity container](#option-1)
 	+ [Option 2: Use a built container and pip install any missing packages every time you submit your jobs](#option-2)
 	+ [Option 3: Load the module from NSCC directly](#option-3)
@@ -21,6 +22,7 @@
 
 First, we need to prepare the Python environment for our code. There are three options:
 
++ Option 0: The best choice is to load the Anaconda3 module directly and then create your virtual environment.
 + Option 1: Create your own Singularity container.
 	+ Pros: Fully customizable. You can install any packages you want and built them all in the container. It's an **one-off effort**.
 	+ Cons: Struggling for Singularity installation and container building. 
@@ -33,6 +35,23 @@ First, we need to prepare the Python environment for our code. There are three o
 	+ Pros: Say goodbye to Singularity.
 	+ Cons: Missing core packages. For example, the Pytorch module missed scipy, pandas, ....
 	+ Comment: Never worked for me. It may work if your code is written purely using Pytorch API.
+
+#### Option 0<a name="option-0"></a>
+[Return to Table of Content](#table-of-content)
+
+Login to your NSCC, type
+
+```
+module avail
+```
+
+so that you will see the list of all the modules. Find the Anaconda3. It should be something like `anaconda3/2022.10`. Load it by typing
+
+```
+load anaconda3/2022.10
+```
+
+Now you can use the `conda` command. Then the rest is all the same. By **same** I mean you can `condo create` your environment and then `condo install` or `pip install` your packages. This option is available for the new nscc. By using this you don't need to bother with the messy singularity container.
 
 #### Option 1<a name="option-1"></a>
 [Return to Table of Content](#table-of-content)
@@ -104,7 +123,7 @@ Note that the module needs to be loaded in the runtime of your job, therefore, t
 
 First, edit your job definition. See `jpb.psb` in detail! The examples and comments there covered everything!
 
-Then, upload your container (the `.sif` file), dataset, code, and `job.psb` to NSCC. I always put `job.psb` and `main.py` in the same directory for convenience. Moreover, following NSCC's instruction, large files like dataset and container should be stored in `~/scratch` directory.
+Then, upload your container (the `.sif` file, if you use option 0 then ignore this one), dataset, code, and `job.psb` to NSCC. I always put `job.psb` and `main.py` in the same directory for convenience. Moreover, following NSCC's instruction, large files like dataset and container should be stored in `~/scratch` directory.
 
 Finally, in the NSCC terminal, cd to the path storing `main.py`, and type
 ```

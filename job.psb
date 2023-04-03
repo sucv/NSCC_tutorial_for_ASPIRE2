@@ -59,6 +59,24 @@ cd "$PBS_O_WORKDIR" || exit $?
 printenv
 nvidia-smi
 
+###### If you use anaconda, not singularity container, see below
+###### If you use anaconda, not singularity container, see below
+###### If you use anaconda, not singularity container, see below
+
+module load anaconda3/2022.10
+conda activate your_env
+python ~/tutorial/main.py
+### python ~/tutorial/main.py --batch_size $bs --epochs $e
+
+###### If you use anaconda, not singularity container, see above
+###### If you use anaconda, not singularity container, see above
+###### If you use anaconda, not singularity container, see above
+
+
+###### If you use singularity container, not anaconda, see below
+###### If you use singularity container, not anaconda, see below
+###### If you use singularity container, not anaconda, see below
+
 ### Bind the scratch directory to singularity so that it can find it.
 ### Don't change them!
 export SINGULARITY_BIND="/scratch:/scratch,/home/project:/data/project"
@@ -73,9 +91,12 @@ export CUDA_VISIBLE_DEVICES=0
 ### singularity run ~/scratch/pt113.sif python -m pip install --user mne pandas seaborn
 
 singularity run --nv  ~/scratch/pt113.sif python ~/tutorial/main.py
+### singularity run --nv  ~/scratch/my.sif python ~/tutorial/main.py --batch_size $bs --epochs $e
 
-### If your main.py has arguments, see the following example.
-### singularity run --nv  ~/scratch/my.sif python ~/tutorial/main.py -var1 $v1 -var2 $v2
+###### If you use singularity container, not anaconda, see above
+###### If you use singularity container, not anaconda, see above
+###### If you use singularity container, not anaconda, see above
+
 
 ### The "singularity run --nv my.sif" means
 ### to use singularity to run "my.sif" container, with
