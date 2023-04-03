@@ -1,5 +1,7 @@
 # Change Log
 
++ 3-APR 2023
+	+ Added the instruction for using Anaconda3.
 + 10-MAR 2023
 	+ Revised the `job.psb` so that the examples for applying more than 1 gpus are provided.
 + 3-MAR 2023
@@ -10,7 +12,7 @@
 # Table of Content<a name="table-of-content"></a>
 
 + [Step 1: Preparation (In Local)](#step-1-preparation-in-local)
-	+ [Option 0: Load anaconda3 and then do it in the usual way](#option-0)
+	+ [Option 0 (best): Load anaconda3 and then do it in the usual way](#option-0)
 	+ [Option 1: Create your own Singularity container](#option-1)
 	+ [Option 2: Use a built container and pip install any missing packages every time you submit your jobs](#option-2)
 	+ [Option 3: Load the module from NSCC directly](#option-3)
