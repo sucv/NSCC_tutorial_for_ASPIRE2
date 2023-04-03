@@ -134,7 +134,7 @@ qsub job.pbs
 
 to submit your job. If your `main.py` needs arguments, and you have already edited your `job.psb` accordingly (see `job.psb` for example), simply feed them with `-v` flag and comma separator as 
 ```
-qsub -v model=supernet,lr=1e-3,modality="video audio",emotion=valence,fold=12,seed=3704 job.pbs
+qsub -v bs=32,e=100 job.pbs
 ```
 
 ## Endnote: Useful commands in NSCC<a name="endnote-useful-commands-in-nscc"></a>
