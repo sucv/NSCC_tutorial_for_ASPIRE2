@@ -50,7 +50,7 @@ module avail
 so that you will see the list of all the modules. Find the Anaconda3. It should be something like `anaconda3/2022.10`. Load it by typing
 
 ```
-load anaconda3/2022.10
+module load anaconda3/2022.10
 ```
 
 Now you can use the `conda` command. Then the rest is all the same. By **same** I mean you can `condo create` your environment and then `condo install` or `pip install` your packages. This option is available for the new nscc. By using this you don't need to bother with the messy singularity container.
