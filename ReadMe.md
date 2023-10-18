@@ -1,5 +1,8 @@
 # Change Log
 
++ 18-OCT 2023
+	+ Simplified the tutorial so that it only use conda instead of singularity anymore.
+	+ Corrected the project ID for our group.
 + 3-APR 2023
 	+ Added the instruction for using Anaconda3.
 + 10-MAR 2023
