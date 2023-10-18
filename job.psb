@@ -32,7 +32,7 @@
 ### The project code, if any, should appear in the welcome information 
 ### in the console once you logged into your NSCC account.
 ### A personal code may queue forever.
-#PBS -P 12001577
+#PBS -P 12003620
 
 ### Specify the name for job
 ### They records the standard outputs and errors during the job execution.
@@ -72,30 +72,6 @@ python ~/tutorial/main.py
 ###### If you use anaconda, not singularity container, see above
 ###### If you use anaconda, not singularity container, see above
 
-
-###### If you use singularity container, not anaconda, see below
-###### If you use singularity container, not anaconda, see below
-###### If you use singularity container, not anaconda, see below
-
-### Bind the scratch directory to singularity so that it can find it.
-### Don't change them!
-export SINGULARITY_BIND="/scratch:/scratch,/home/project:/data/project"
-module load singularity
-
-### Manually assign index to Singularity
-export CUDA_VISIBLE_DEVICES=0
-### Note that if you applied more gpus, then using export CUDA_VISIBLE_DEVICES=0,1,2,3 for 4 gpus.
-### export CUDA_VISIBLE_DEVICES=0,1,2,3
-
-### If you choose to install your Python package on-the-go, uncomment the next line to install your packages.
-### singularity run ~/scratch/pt113.sif python -m pip install --user mne pandas seaborn
-
-singularity run --nv  ~/scratch/pt113.sif python ~/tutorial/main.py
-### singularity run --nv  ~/scratch/my.sif python ~/tutorial/main.py --batch_size $bs --epochs $e
-
-###### If you use singularity container, not anaconda, see above
-###### If you use singularity container, not anaconda, see above
-###### If you use singularity container, not anaconda, see above
 
 
 ### The "singularity run --nv my.sif" means
