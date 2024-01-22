@@ -1,5 +1,7 @@
 # Change Log
 
++ 22-JAN 2024
+  	+ Modified `anaconda3` to `miniforge3` in `job.psb`, as NSCC no longer supports `anaconda3`.
 + 18-OCT 2023
 	+ Simplified the tutorial so that it only uses conda instead of singularity anymore.
 	+ Corrected the project ID for our group.
@@ -27,10 +29,10 @@ First, we need to prepare the Python environment for our code. Login to your NSC
 module avail
 ```
 
-so that you will see the list of all the modules. Find the Anaconda3. It should be something like `anaconda3/2022.10`. Load it by typing
+so that you will see the list of all the modules. Find the `Miniforge3`. (It is a open-sourced version of Anaconda, the two are equivalent in usage.) It should be something like `miniforge3/23.10`. Load it by typing
 
 ```
-module load anaconda3/2022.10
+module load miniforge3/23.10
 ```
 
 Now you can use the `conda` command. Then the rest is all the same. By **same** I mean you can `condo create` your environment and then `condo install` or `pip install` your packages. This option is available for the new nscc. By using this you don't need to bother with the messy singularity container.
@@ -52,6 +54,11 @@ qsub job.pbs
 to submit your job. If your `main.py` needs arguments, and you have already edited your `job.psb` accordingly (see `job.psb` for example), simply feed them with `-v` flag and comma separator as 
 ```
 qsub -v bs=32,e=100 job.pbs
+```
+
+and use below for feeding lists
+```
+qsub -v bs=32,e=100,modal="visual audio" job.psb
 ```
 
 ## Endnote: Useful commands in NSCC<a name="endnote-useful-commands-in-nscc"></a>
