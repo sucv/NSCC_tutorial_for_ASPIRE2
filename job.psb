@@ -63,7 +63,7 @@ nvidia-smi
 ###### If you use anaconda, not singularity container, see below
 ###### If you use anaconda, not singularity container, see below
 
-module load anaconda3/2022.10
+module load miniforge3/23.10
 conda activate your_env
 python ~/tutorial/main.py
 ### python ~/tutorial/main.py --batch_size $bs --epochs $e
